@@ -1,0 +1,10 @@
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+export const ADMIN_EMAIL='muttmeadoptablepets@gmail.com';
+const firebaseConfig={ apiKey: import.meta.env.VITE_FIREBASE_API_KEY, authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN };
+const app=initializeApp(firebaseConfig);
+export const auth=getAuth(app);
+const provider=new GoogleAuthProvider();
+export const signInWithGoogle=()=>signInWithPopup(auth,provider);
+export const logout=()=>signOut(auth);
+export const watchAuth=(cb)=>onAuthStateChanged(auth,cb);

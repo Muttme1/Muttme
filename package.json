@@ -1,0 +1,10 @@
+{
+  "name": "muttme-v6",
+  "version": "0.6.0",
+  "private": true,
+  "scripts": {
+    "setup": "npm --prefix client install && npm --prefix client run build && npm --prefix server install",
+    "start": "node server/index.js",
+    "dev": "npm run setup && npm start"
+  }
+}
