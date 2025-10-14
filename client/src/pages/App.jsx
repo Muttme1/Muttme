@@ -39,8 +39,8 @@ export default function App(){
   </div>
 </section>
         <div className="flex items-center gap-3">
-          <img src="/logo-192.png" alt="MuttMe" className="w-12" />
-          <h1 className="text-2xl font-bold">MuttMe</h1>
+          <img src="/logo-192.png" alt="Muttme" className="w-12" />
+          <h1 className="text-2xl font-bold">Muttme</h1>
         </div>
         {user ? (
           <button onClick={logout} className="bg-gray-200 px-3 py-1 rounded text-sm">Logout</button>
@@ -67,9 +67,18 @@ export default function App(){
 
       <main className="max-w-xl mx-auto">
         <div className="h-[520px] relative">
+          {dogs.length === 0 && (
+         <div className="max-w-xl mx-auto text-center text-gray-500 py-20">
+    No dogs match your filters yet. Try adjusting filters or check back soon!
+    </div>
+  )
+}
           {dogs.map((d) => (<SwipeCard key={d.id} dog={d} user={user} />))}
         </div>
       </main>
+      <footer className="max-w-3xl mx-auto mt-10 text-center text-sm text-gray-500 py-10">
+  Made with ♥ for adoptable pups · <a className="underline" href="/about">About</a> · <a className="underline" href="/faq">FAQ</a>
+</footer>
     </div>
   )
 }
