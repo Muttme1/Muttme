@@ -37,6 +37,13 @@ export default function AddDog(){
 <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={vaccinated} onChange={e=>setVaccinated(e.target.checked)}/> Vaccinated</label>
 <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={spayNeuter} onChange={e=>setSpayNeuter(e.target.checked)}/> Spayed/Neutered</label>
 <input className="border rounded px-3 py-2" placeholder="Adoption fee (optional)" type="number" value={fee} onChange={e=>setFee(e.target.value)} />
+<input
+  className="border rounded px-3 py-2"
+  type="file"
+  accept="image/*"
+  multiple
+  onChange={e=>setFile(e.target.files)}
+/>
 
   async function handleSubmit(e){
     e.preventDefault()
