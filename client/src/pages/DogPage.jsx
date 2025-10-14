@@ -10,6 +10,20 @@ export default function DogPage(){
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [sending, setSending] = useState(false)
+  
+  const [photos, setPhotos] = useState([])
+useEffect(()=>{
+  if(!id) return;
+  supabase.from('dogs').select('*').eq('id', id).single().then(({ data })=>setDog(data))
+  supabase.from('dog_photos').select('*').eq('dog_id', id).order('created_at', { ascending: true }).then(({ data })=>setPhotos(data||[]))
+},[id])
+  {photos.length > 0 && (
+  <div className="mt-3 grid grid-cols-4 gap-2">
+    {photos.map(p => (
+      <img key={p.id} src={p.url} alt="" className="h-20 w-full object-cover rounded" />
+    ))}
+  </div>
+)}
 
   useEffect(()=>{ supabase.from('dogs').select('*').eq('id', id).single().then(({ data })=>setDog(data)) },[id])
 
