@@ -35,6 +35,14 @@ export default function DogPage(){
         <h2 className="text-2xl font-bold mt-3">{dog.name} <span className="text-sm text-gray-500">· {dog.age}</span></h2>
         <p className="text-sm text-gray-600">{dog.breed}</p>
         <p className="mt-3 text-gray-800">{dog.bio}</p>
+        <ul className="mt-3 text-sm text-gray-700 grid grid-cols-2 gap-y-1">
+  {dog.location && <li><b>Location:</b> {dog.location}</li>}
+  {dog.size && <li><b>Size:</b> {dog.size}</li>}
+  {dog.sex && <li><b>Sex:</b> {dog.sex}</li>}
+  <li><b>Vaccinated:</b> {dog.vaccinated ? 'Yes' : 'No'}</li>
+  <li><b>Spayed/Neutered:</b> {dog.spay_neuter ? 'Yes' : 'No'}</li>
+  {dog.adoption_fee && <li><b>Adoption fee:</b> ${dog.adoption_fee}</li>}
+</ul>
         <hr className="my-6"/>
         <h3 className="text-lg font-semibold mb-2">Adopt {dog.name}</h3>
         <form onSubmit={submitInquiry} className="grid gap-3">
