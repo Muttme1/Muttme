@@ -24,8 +24,12 @@ export default function SwipeCard({ dog, user }){
   if(gone) return null
 
   return (
-    <div ref={ref} className="absolute left-0 right-0 mx-auto w-[360px] bg-white rounded-xl p-4 shadow-lg touch-none select-none"
-      style={{transform:`translateX(${offset.x}px) translateY(${offset.y}px)`}} onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp}>
+   <div
+  ref={ref}
+  className="absolute left-0 right-0 mx-auto w-[360px] card p-4 touch-none select-none hover:-translate-y-0.5 hover:shadow-xl transition"
+  style={{ transform:`translateX(${offset.x}px) translateY(${offset.y}px)` }}
+  onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp}
+>
       <div className="h-72 rounded-md overflow-hidden bg-gray-200">
         <img src={dog.img} alt={dog.name} className="w-full h-full object-cover"/>
       </div>
