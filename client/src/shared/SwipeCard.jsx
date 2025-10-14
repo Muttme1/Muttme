@@ -30,24 +30,25 @@ export default function SwipeCard({ dog, user }){
   style={{ transform:`translateX(${offset.x}px) translateY(${offset.y}px)` }}
   onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp}
 >
-      <div className="h-72 rounded-md overflow-hidden bg-gray-200">
-        <img src={dog.img} alt={dog.name} className="w-full h-full object-cover"/>
-      </div>
+     <div className="h-72 rounded-xl overflow-hidden relative">
+  <img src={dog.img} alt={dog.name} className="w-full h-full object-cover" />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+</div>
       <div className="mt-3 flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-bold">{dog.name} <span className="text-sm text-gray-500">· {dog.age}</span></h3>
-          <p className="text-sm text-gray-600">{dog.breed}</p>
-          <div className="flex gap-2 text-xs mt-1">
-            {dog.good_with_kids && <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded">👧 Kids</span>}
-            {dog.good_with_dogs && <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded">🐶 Dogs</span>}
-            {dog.good_with_cats && <span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded">🐱 Cats</span>}
-            {dog.energy_level && <span className="bg-amber-100 text-amber-700 px-2 py-0.5 rounded">⚡ {dog.energy_level}</span>}
-          </div>
-        </div>
-        <div className="flex flex-col gap-2">
-          <a href={'/dog/' + dog.id} className="px-3 py-1 rounded bg-teal-600 text-white text-sm">View More Info</a>
-        </div>
-      </div>
+  <div>
+    <h3 className="text-lg font-bold">{dog.name} <span className="text-sm text-gray-500">· {dog.age}</span></h3>
+    <p className="text-sm text-gray-600">{dog.breed}</p>
+    <div className="flex flex-wrap gap-2 text-xs mt-2">
+      {dog.good_with_kids && <span className="badge bg-green-100 text-green-700">👧 Kids</span>}
+      {dog.good_with_dogs && <span className="badge bg-blue-100 text-blue-700">🐶 Dogs</span>}
+      {dog.good_with_cats && <span className="badge bg-purple-100 text-purple-700">🐱 Cats</span>}
+      {dog.energy_level && <span className="badge bg-amber-100 text-amber-700">⚡ {dog.energy_level}</span>}
+    </div>
+  </div>
+  <div className="flex flex-col gap-2">
+    <a href={'/dog/' + dog.id} className="btn btn-primary text-sm">Meet {dog.name}</a>
+  </div>
+</div>
     </div>
   )
 }
