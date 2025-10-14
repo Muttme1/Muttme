@@ -16,11 +16,27 @@ export default function AddDog(){
   const [cats, setCats] = useState(false)
   const [energy, setEnergy] = useState('')
   const [saving, setSaving] = useState(false)
+  const [location, setLocation] = useState('')
+  const [size, setSize] = useState('')
+  const [sex, setSex] = useState('')
+  const [vaccinated, setVaccinated] = useState(false)
+  const [spayNeuter, setSpayNeuter] = useState(false)
+  const [fee, setFee] = useState('')
   const nav = useNavigate()
 
   useEffect(()=> watchAuth(setUser), [])
 
   const isAdmin = user?.email === "muttmeadoptablepets@gmail.com"
+<input className="border rounded px-3 py-2" placeholder="Location (City, ST)" value={location} onChange={e=>setLocation(e.target.value)} />
+<select className="border rounded px-3 py-2" value={size} onChange={e=>setSize(e.target.value)}>
+  <option value="">Size</option><option>Small</option><option>Medium</option><option>Large</option>
+</select>
+<select className="border rounded px-3 py-2" value={sex} onChange={e=>setSex(e.target.value)}>
+  <option value="">Sex</option><option>Male</option><option>Female</option>
+</select>
+<label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={vaccinated} onChange={e=>setVaccinated(e.target.checked)}/> Vaccinated</label>
+<label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={spayNeuter} onChange={e=>setSpayNeuter(e.target.checked)}/> Spayed/Neutered</label>
+<input className="border rounded px-3 py-2" placeholder="Adoption fee (optional)" type="number" value={fee} onChange={e=>setFee(e.target.value)} />
 
   async function handleSubmit(e){
     e.preventDefault()
@@ -39,6 +55,12 @@ export default function AddDog(){
       const { error: insErr } = await supabase.from('dogs').insert({
         name, age: age ? Number(age) : null, breed, bio, img: imgUrl,
         good_with_kids: kids, good_with_dogs: dogs, good_with_cats: cats, energy_level: energy
+  location,
+  size,
+  sex,
+  vaccinated,
+  spay_neuter: spayNeuter,
+  adoption_fee: fee ? Number(fee) : null
       })
       if(insErr) throw insErr
 
