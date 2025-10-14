@@ -7,6 +7,9 @@ import DogPage from './pages/DogPage'
 import AddDog from './pages/AddDog'
 import Shelter from './pages/Shelter'
 import './index.css'
+import About from './pages/About'
+import FAQ from './pages/FAQ'
+
 
 function Nav(){
   return (
@@ -29,6 +32,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/dog/:id" element={<DogPage />} />
         <Route path="/add" element={<AddDog />} />
         <Route path="/shelter" element={<Shelter />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
