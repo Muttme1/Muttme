@@ -30,6 +30,14 @@ export default function App(){
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-rose-50 p-6 font-sans">
       <header className="max-w-xl mx-auto flex items-center justify-between mb-4">
+        <section className="max-w-3xl mx-auto text-center bg-[var(--mm-bg)] rounded-3xl p-8 mb-6">
+  <h1 className="text-3xl md:text-4xl font-extrabold">Find your furry soulmate</h1>
+  <p className="text-gray-600 mt-2">Swipe to “Soul Match” and connect with local rescues.</p>
+  <div className="mt-4 flex justify-center gap-3">
+    <a href="/shelter" className="btn btn-muted">Shelter Dashboard</a>
+    <a href="/add" className="btn btn-primary">Add a Dog</a>
+  </div>
+</section>
         <div className="flex items-center gap-3">
           <img src="/logo-192.png" alt="MuttMe" className="w-12" />
           <h1 className="text-2xl font-bold">MuttMe</h1>
